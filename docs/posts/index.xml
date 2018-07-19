@@ -6,13 +6,216 @@
     <description>Recent content in Posts on WTF - A Terminal Dashboard</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sat, 26 May 2018 19:26:23 -0700</lastBuildDate>
+    <lastBuildDate>Thu, 05 Jul 2018 22:55:55 -0300</lastBuildDate>
     
 	<atom:link href="https://wtfutil.com/posts/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
-      <title>Modules: Power</title>
+      <title>Todoist</title>
+      <link>https://wtfutil.com/posts/modules/todoist/</link>
+      <pubDate>Thu, 05 Jul 2018 22:55:55 -0300</pubDate>
+      
+      <guid>https://wtfutil.com/posts/modules/todoist/</guid>
+      <description>Added in v0.0.11.
+Displays all items on specified project.
+Source Code wtf/todoist/ Required ENV Variables Key: WTF_TODOIST_TOKEN Value: Your Todoist API Token. You can get your API Token at: todoist.com/prefs/integrations.
+Keyboard Commands Key: h Action: Show the previous project.
+Key: ← Action: Show the previous project.
+Key: l Action: Show the next project.
+Key: → Action: Show the next project.
+Key: j Action: Select the next item in the list.</description>
+    </item>
+    
+    <item>
+      <title>Gerrit</title>
+      <link>https://wtfutil.com/posts/modules/gerrit/</link>
+      <pubDate>Wed, 27 Jun 2018 15:55:42 -0700</pubDate>
+      
+      <guid>https://wtfutil.com/posts/modules/gerrit/</guid>
+      <description>Displays information about your projects hosted on Gerrit:
+Open Incoming Reviews All open reviews that are requesting your approval.
+My Outgoing Reviews All open reviews created by you.
+Source Code wtf/gerrit/ Required ENV Variables Key: WTF_GERRIT_PASSWORD Action: Your Gerrit HTTP Password.
+Keyboard Commands Key: / Action: Open/close the widget&amp;rsquo;s help window.
+Key: h Action: Show the previous project.
+Key: l Action: Show the next project.
+Key: ← Action: Show the previous project.</description>
+    </item>
+    
+    <item>
+      <title>Logger</title>
+      <link>https://wtfutil.com/posts/modules/logger/</link>
+      <pubDate>Sat, 16 Jun 2018 14:22:18 -0700</pubDate>
+      
+      <guid>https://wtfutil.com/posts/modules/logger/</guid>
+      <description>Displays the contents of the WTF log file.
+To log to this file in your own modules:
+require &amp;#34;github.com/senorprogrammer/wtf/logger&amp;#34; logger.Log(&amp;#34;This is a log entry&amp;#34;) Source Code wtf/logger/ Required ENV Variables None.
+Keyboard Commands Arrow keys scroll through the log file.
+Configuration logger:enabled:trueposition:top:5left:4height:2width:1refreshInterval:1 Attributes enabled Determines whether or not this module is executed and if its data displayed onscreen. Note: If you&amp;rsquo;re using logging and logging is disabled, your logs will still be written to file, the widget just won&amp;rsquo;t be shown onscreen.</description>
+    </item>
+    
+    <item>
+      <title>Blockfolio</title>
+      <link>https://wtfutil.com/posts/modules/cryptocurrencies/blockfolio/</link>
+      <pubDate>Wed, 13 Jun 2018 09:29:59 -0700</pubDate>
+      
+      <guid>https://wtfutil.com/posts/modules/cryptocurrencies/blockfolio/</guid>
+      <description>Added in v0.0.8.
+Display your Blockfolio crypto holdings.
+Source wtf/blockfolio/ Required ENV Variables None.
+Keyboard Commands None.
+Configuration blockfolio:colors:name:bluegrows:greendrop:reddevice_token:&amp;#34;device token&amp;#34;displayHoldings:trueenabled:trueposition:top:3left:1width:1height:1refreshInterval:400 Attributes colors.name Values: Any X11 color name.
+colors.grows Values: Any X11 color name.
+colors.drop Values: Any X11 color name.
+device_token Value: See this gist for details on how to get your Blockfolio API token.
+displayHoldings enabled Determines whether or not this module is executed and if its data displayed onscreen.</description>
+    </item>
+    
+    <item>
+      <title>IP-API</title>
+      <link>https://wtfutil.com/posts/modules/ipapi/</link>
+      <pubDate>Sun, 10 Jun 2018 19:41:52 -0400</pubDate>
+      
+      <guid>https://wtfutil.com/posts/modules/ipapi/</guid>
+      <description>Added in v0.0.7.
+Displays your current IP address information, from IP-APIcom.
+Note: IP-API.com has a free-plan rate limit of 120 requests per minute.
+Source Code wtf/ipapi/ Required ENV Variables None.
+Keyboard Commands None.
+Configuration ipinfo:colors:name:redvalue:whiteenabled:trueposition:top:1left:2height:1width:1refreshInterval:150 Attributes colors.name The default colour for the row names. Values: Any X11 color name.
+colors.value The default colour for the row values. Values: Any X11 color name.
+enabled Determines whether or not this module is executed and if its data displayed onscreen.</description>
+    </item>
+    
+    <item>
+      <title>CircleCI</title>
+      <link>https://wtfutil.com/posts/modules/circleci/</link>
+      <pubDate>Sun, 10 Jun 2018 19:26:08 -0400</pubDate>
+      
+      <guid>https://wtfutil.com/posts/modules/circleci/</guid>
+      <description>Added in v0.0.7.
+Displays build information for your CircleCI account.
+Source Code wtf/circleci/ Required ENV Variables Key: WTF_CIRCLE_API_KEY Value: Your CircleCI API token.
+Keyboard Commands None.
+Configuration circleci:enabled:trueposition:top:4left:1height:1width:2refreshInterval:900 Attributes enabled Determines whether or not this module is executed and if its data displayed onscreen. Values: true, false.
+position Defines where in the grid this module&amp;rsquo;s widget will be displayed. refreshInterval How often, in seconds, this module will update its data.</description>
+    </item>
+    
+    <item>
+      <title>Google Spreadsheets</title>
+      <link>https://wtfutil.com/posts/modules/gspreadsheet/</link>
+      <pubDate>Sun, 10 Jun 2018 18:26:26 -0400</pubDate>
+      
+      <guid>https://wtfutil.com/posts/modules/gspreadsheet/</guid>
+      <description>Added in v0.0.7.
+Display information from cells in a Google Spreadsheet.
+wtf/gspreadsheets/ Required ENV Variables None.
+Keyboard Commands None.
+Configuration gspreadsheets:colors:values:&amp;#34;green&amp;#34;cells:names:-&amp;#34;Cell 1 name&amp;#34;-&amp;#34;Cell 2 name&amp;#34;addresses:-&amp;#34;A1&amp;#34;-&amp;#34;A2&amp;#34;enabled:trueposition:top:0left:0width:1height:1refreshInterval:&amp;#34;300&amp;#34;secretFile:&amp;#34;~/.config/wtf/gspreadsheets/client_secret.json&amp;#34;sheetId:&amp;#34;id_of_google_spreadsheet&amp;#34; Attributes colors.values The color to display the cell values in. Values: Any X11 color name.
+cells.names cells.addresses enabled Whether or not this module is executed and if its data displayed onscreen. Values: true, false.
+position Where in the grid this module&amp;rsquo;s widget will be displayed.</description>
+    </item>
+    
+    <item>
+      <title>Modules: Jenkins</title>
+      <link>https://wtfutil.com/posts/modules/jenkins/</link>
+      <pubDate>Sat, 09 Jun 2018 20:53:35 -0700</pubDate>
+      
+      <guid>https://wtfutil.com/posts/modules/jenkins/</guid>
+      <description>Added in v0.0.8.
+Displays jenkins status of given builds in a project or view
+Source Code wtf/jenkins/ Required ENV Variables Key: WTF_JENKINS_API_KEY Value: Your Jenkins API key.
+Keyboard Commands None.
+Configuration jenkins:enabled:trueposition:top:2left:3height:2width:3refreshInterval:300url:&amp;#34;https://jenkins.domain.com/jenkins/view_url&amp;#34;user:&amp;#34;username&amp;#34; Attributes enabled Determines whether or not this module is executed and if its data displayed onscreen. Values: true, false.
+position Defines where in the grid this module&amp;rsquo;s widget will be displayed.
+refreshInterval How often, in seconds, this module will update its data.</description>
+    </item>
+    
+    <item>
+      <title>GitLab</title>
+      <link>https://wtfutil.com/posts/modules/gitlab/</link>
+      <pubDate>Fri, 08 Jun 2018 13:14:11 -0700</pubDate>
+      
+      <guid>https://wtfutil.com/posts/modules/gitlab/</guid>
+      <description>Added in v0.0.8.
+Displays information about your projects hosted on GitLab:
+Open Approval Requests All open merge requests that are requesting your approval.
+Open Merge Requests All open merge requests created by you.
+Source Code wtf/gitlab/ Required ENV Variables Key: WTF_GITLAB_TOKEN Action: A GitLab personal access token. Requires at least api access.
+Keyboard Commands Key: / Action: Open/close the widget&amp;rsquo;s help window.
+Key: h Action: Show the previous project.</description>
+    </item>
+    
+    <item>
+      <title>Bittrex</title>
+      <link>https://wtfutil.com/posts/modules/cryptocurrencies/bittrex/</link>
+      <pubDate>Mon, 04 Jun 2018 20:06:40 -0700</pubDate>
+      
+      <guid>https://wtfutil.com/posts/modules/cryptocurrencies/bittrex/</guid>
+      <description>Added in v0.0.5.
+Get the last 24 hour summary of cryptocurrencies market using Bittrex.
+Source Code wtf/cryptoexchanges/bittrex/ Required ENV Variables None.
+Keyboard Commands None.
+Configuration bittrex:enabled:trueposition:top:1left:2height:3width:1refreshInterval:5summary:BTC:displayName:Bitcoinmarket:-LTC-ETHcolors:base:name:orangedisplayName:redmarket:name:redfield:whitevalue:green Attributes colors.base.name Values: Any X11 color name.
+colors.base.dispayName Values: Any X11 color name.
+colors.market.name Values: Any X11 color name.
+colors.market.field Values: Any X11 color name.
+colors.market.value Values: Any X11 color name.
+summary enabled Determines whether or not this module is executed and if its data displayed onscreen.</description>
+    </item>
+    
+    <item>
+      <title>CryptoLive</title>
+      <link>https://wtfutil.com/posts/modules/cryptocurrencies/cryptolive/</link>
+      <pubDate>Sun, 03 Jun 2018 20:06:40 -0700</pubDate>
+      
+      <guid>https://wtfutil.com/posts/modules/cryptocurrencies/cryptolive/</guid>
+      <description>Added in v0.0.5.
+Compare crypto currencies using CryptoCompare.
+Source Code wtf/cryptoexchanges/cryptolive/ Required ENV Vars None.
+Keyboard Commands None.
+Configuration cryptolive:enabled:trueposition:top:5left:2height:1width:2updateInterval:15currencies:BTC:displayName:Bitcointo:-USD-EUR-ETH-LTC-DOGELTC:displayName:Ethereumto:-USD-EUR-BTCtop:BTC:displayName:Bitcoinlimit:5to:-USDcolors:from:name:coraldisplayName:greyto:name:whiteprice:greentop:from:name:greydisplayName:coralto:name:redfield:whitevalue:green Attributes colors.from.name Values: Any X11 color name.
+colors.from.dispayName Values: Any X11 color name.
+colors.to.name Values: Any X11 color name.
+colors.to.price Values: Any X11 color name.
+currencies enabled Determines whether or not this module is executed and if its data displayed onscreen. Values: true, false.
+position Defines where in the grid this module&amp;rsquo;s widget will be displayed.</description>
+    </item>
+    
+    <item>
+      <title>Pretty Weather</title>
+      <link>https://wtfutil.com/posts/modules/prettyweather/</link>
+      <pubDate>Sat, 02 Jun 2018 05:32:04 -0700</pubDate>
+      
+      <guid>https://wtfutil.com/posts/modules/prettyweather/</guid>
+      <description>Displays weather information as ASCII art from Wttr.in.
+Source Code wtf/prettyweather/ Required ENV Variables None.
+Keyboard Commands None.
+Configuration prettyweather:enabled:truecity:&amp;#34;tehran&amp;#34;position:top:3left:5height:1width:1refreshInterval:300unit:&amp;#34;c&amp;#34;view:0 Attributes city Optional. It will grab the current location from your IP address if omitted.
+Values: The name of any city supported by Wttr.in.
+enabled Determines whether or not this module is executed and if its data displayed onscreen. Values: true, false.
+position Defines where in the grid this module&amp;rsquo;s widget will be displayed.</description>
+    </item>
+    
+    <item>
+      <title>IPInfo</title>
+      <link>https://wtfutil.com/posts/modules/ipinfo/</link>
+      <pubDate>Fri, 01 Jun 2018 23:18:48 -0700</pubDate>
+      
+      <guid>https://wtfutil.com/posts/modules/ipinfo/</guid>
+      <description>Displays your current IP address information, from ipinfo.io.
+Note: IPInfo.io has a free-plan rate limit of 1000 requests per day.
+Source Code wtf/ipinfo/ Required ENV Variables None.
+Keyboard Commands None.
+Configuration ipinfo:colors:name:redvalue:whiteenabled:trueposition:top:1left:2height:1width:1refreshInterval:150 Attributes colors.name The default colour for the row names. Values: Any X11 color name.
+colors.value The default colour for the row values. Values: Any X11 color name.
+enabled Determines whether or not this module is executed and if its data displayed onscreen.</description>
+    </item>
+    
+    <item>
+      <title>Power</title>
       <link>https://wtfutil.com/posts/modules/power/</link>
       <pubDate>Sat, 26 May 2018 19:26:23 -0700</pubDate>
       
@@ -56,14 +259,14 @@ Quick Start  Download the stand-alone, compiled binary. Unzip the downloaded fil
       <guid>https://wtfutil.com/posts/installation/</guid>
       <description>There are two ways to install WTF:
 From Source Get this repo and install the dependencies:
-go get github.com/senorprogrammer/wtf cd $GOPATH/src/github.com/senorprogrammer/wtf make install make run and that should probably do it.
+go get -u github.com/senorprogrammer/wtf cd $GOPATH/src/github.com/senorprogrammer/wtf make install make run and that should probably do it.
 As a Binary Grab the latest version from here:
 https://github.com/senorprogrammer/wtf/releases expand it, and cd into the resulting directory. Then run:
 ./wtf and that should also do it.</description>
     </item>
     
     <item>
-      <title>Modules: CmdRunner</title>
+      <title>CmdRunner</title>
       <link>https://wtfutil.com/posts/modules/cmdrunner/</link>
       <pubDate>Thu, 17 May 2018 17:17:10 -0700</pubDate>
       
@@ -82,11 +285,11 @@ cmd The terminal command to be run, withouth the arguments. Ie: ping, whoami, cu
       
       <guid>https://wtfutil.com/posts/configuration/attributes/</guid>
       <description>The following top-level attributes are configurable in config.yml. See this example config file for more details.
-wtf:colors:border:Focusable:&amp;#34;darkslateblue&amp;#34;focused:&amp;#34;orange&amp;#34;normal:&amp;#34;gray&amp;#34;grid:# How _wide_ the columns are, in terminal characters. In this case we have# six columns, each of which are 35 characters widecolumns:[35,35,35,35,35,35]# How _high_ the rows are, in terminal lines. In this case we have five rows# that support ten line of text, one of three lines, and one of fourrows:[10,10,10,10,10,3,4]# The app redraws itself once a secondrefreshInterval:1 Attributes colors.</description>
+wtf:colors:background:&amp;#34;red&amp;#34;border:Focusable:&amp;#34;darkslateblue&amp;#34;focused:&amp;#34;orange&amp;#34;normal:&amp;#34;gray&amp;#34;grid:# How _wide_ the columns are, in terminal characters. In this case we have# six columns, each of which are 35 characters widecolumns:[35,35,35,35,35,35]# How _high_ the rows are, in terminal lines. In this case we have five rows# that support ten line of text, one of three lines, and one of fourrows:[10,10,10,10,10,3,4]# The app redraws itself once a secondrefreshInterval:1term:&amp;#34;xterm-256color&amp;#34; Attributes colors.</description>
     </item>
     
     <item>
-      <title>Modules: Todo</title>
+      <title>Todo</title>
       <link>https://wtfutil.com/posts/modules/todo/</link>
       <pubDate>Thu, 10 May 2018 12:41:50 -0700</pubDate>
       
@@ -100,52 +303,63 @@ Key: j Action: Select the next item in the list.</description>
     </item>
     
     <item>
-      <title>Modules: Jira</title>
+      <title>Jira</title>
       <link>https://wtfutil.com/posts/modules/jira/</link>
       <pubDate>Thu, 10 May 2018 10:44:35 -0700</pubDate>
       
       <guid>https://wtfutil.com/posts/modules/jira/</guid>
       <description>Displays all Jira issues assigned to you for the specified project.
 Source Code wtf/jira/ Required ENV Variables Key: WTF_JIRA_API_KEY Value: Your Jira API key.
-Keyboard Commands None.
-Configuration jira:colors:rows:even:&amp;#34;lightblue&amp;#34;odd:&amp;#34;white&amp;#34;domain:&amp;#34;https://umbrellacorp.atlassian.net&amp;#34;email:&amp;#34;chriscummer@me.com&amp;#34;enabled:trueposition:top:4left:1height:1width:2project:&amp;#34;JIRA&amp;#34;refreshInterval:900username:&amp;#34;chris.cummer&amp;#34; Attributes colors.rows.even Define the foreground color for even-numbered rows. Values: Any X11 color name.
-colors.rows.odd Define the foreground color for odd-numbered rows. Values: Any X11 color name.
-domain Your Jira corporate domain. Values: A valid URI.
-email The email address associated with your Jira account.</description>
+Keyboard Commands Key: [return] Action: Open the selected issue in the browser.
+Key: j Action: Select the next item in the list.
+Key: k Action: Select the previous item in the list.
+Key: ↓ Action: Select the next item in the list.
+Key: ↑ Action: Select the previous item in the list.</description>
     </item>
     
     <item>
-      <title>Modules: Google Calendar</title>
+      <title>Trello</title>
+      <link>https://wtfutil.com/posts/modules/trello/</link>
+      <pubDate>Thu, 10 May 2018 10:44:35 -0700</pubDate>
+      
+      <guid>https://wtfutil.com/posts/modules/trello/</guid>
+      <description>Displays all Trello cards on specified lists.
+Source Code wtf/trello/ Required ENV Variables Key: WTF_TRELLO_APP_KEY Value: Your Trello App Key. Key: WTF_TRELLO_ACCESS_TOKEN Value: Your Trello Access Token. You can get your API key at: trello.com/app-key.
+Keyboard Commands None.
+Configuration Single Trello List trello:board:Mainenabled:truelist:&amp;#34;Todo&amp;#34;position:height:1left:2top:0width:1refreshInterval:3600username:myname Multiple Trello Lists If you want to monitor multiple Trello lists, use the following configuration (note the difference in list):
+trello:board:Mainenabled:truelist:[&amp;#34;Todo&amp;#34;,&amp;#34;Done&amp;#34;]position:height:1left:2top:0width:1refreshInterval:3600username:myname Attributes board The name of the Trello board.</description>
+    </item>
+    
+    <item>
+      <title>Google Calendar</title>
       <link>https://wtfutil.com/posts/modules/gcal/</link>
       <pubDate>Thu, 10 May 2018 08:25:33 -0700</pubDate>
       
       <guid>https://wtfutil.com/posts/modules/gcal/</guid>
       <description>Displays your upcoming Google calendar events.
-Source Code wtf/gcal/ Required ENV Variables Key: WTF_GOOGLE_CAL_CLIENT_ID Value: Your Google API client ID.
-Key: WTF_GOOGLE_CAL_CLIENT_SECRET Value: Your Google API client secret.
+Not: Setting up access to Google Calendars for Go is a bit unobvious. Check out Google&amp;rsquo;s Go Quickstart first and if you have problems, then take a look at this comment by WesleydeSouza which offers a slightly different approach.
+Source Code wtf/gcal/ Required ENV Variables None.
 Keyboard Commands None.
-Configuration gcal:colors:title:&amp;#34;red&amp;#34;description:&amp;#34;lightblue&amp;#34;highlights:-[&amp;#39;1on1|1\/11&amp;#39;,&amp;#39;green&amp;#39;]-[&amp;#39;apple|google|aws&amp;#39;,&amp;#39;blue&amp;#39;]-[&amp;#39;interview|meet&amp;#39;,&amp;#39;magenta&amp;#39;]-[&amp;#39;lunch&amp;#39;,&amp;#39;yellow&amp;#39;]past:&amp;#34;gray&amp;#34;conflictIcon:&amp;#34;🚨&amp;#34;currentIcon:&amp;#34;💥&amp;#34;displayResponseStatus:trueemail:&amp;#34;chriscummer@me.com&amp;#34;enabled:trueeventCount:12position:top:0left:0height:4width:1refreshInterval:300secretFile:&amp;#34;~/.wtf/gcal/client_secret.json&amp;#34;withLocation:true Attributes colors.title The default colour for calendar event titles. Values: Any X11 color name.
-colors.description The default color for calendar event descriptions. Values: Any X11 color name.
-colors.highlights A list of arrays that define a regular expression pattern and a color.</description>
+Configuration gcal:colors:title:&amp;#34;red&amp;#34;description:&amp;#34;lightblue&amp;#34;highlights:-[&amp;#39;1on1|1\/11&amp;#39;,&amp;#39;green&amp;#39;]-[&amp;#39;apple|google|aws&amp;#39;,&amp;#39;blue&amp;#39;]-[&amp;#39;interview|meet&amp;#39;,&amp;#39;magenta&amp;#39;]-[&amp;#39;lunch&amp;#39;,&amp;#39;yellow&amp;#39;]past:&amp;#34;gray&amp;#34;conflictIcon:&amp;#34;🚨&amp;#34;currentIcon:&amp;#34;💥&amp;#34;displayResponseStatus:trueemail:&amp;#34;chriscummer@me.com&amp;#34;enabled:trueeventCount:12multiCalendar:trueposition:top:0left:0height:4width:1refreshInterval:300secretFile:&amp;#34;~/.config/wtf/gcal/client_secret.json&amp;#34;withLocation:true Attributes colors.title The default colour for calendar event titles. Values: Any X11 color name.</description>
     </item>
     
     <item>
-      <title>Modules: Github</title>
+      <title>GitHub</title>
       <link>https://wtfutil.com/posts/modules/github/</link>
       <pubDate>Wed, 09 May 2018 19:20:20 -0700</pubDate>
       
       <guid>https://wtfutil.com/posts/modules/github/</guid>
-      <description>Displays information about git repositories hosted on Github: open review requests, and open pull requests.
+      <description>Displays information about your git repositories hosted on Github:
 Open Review Requests All open code review requests assigned to you.
 Open Pull Requests All open pull requests created by you.
-Source Code wtf/github/ Required ENV Variables Key: WTF_GITHUB_TOKEN Action: Your Github API token.
-Keyboard Commands Key: / Action: Open/close the widget&amp;rsquo;s help window.
-Key: h Action: Show the previous git repository.
-Key: l Action: Show the next git repository.</description>
+Source Code wtf/github/ Github Required ENV Variables Key: WTF_GITHUB_TOKEN Action: Your Github API token.
+GitHub Enterprise Required ENV Variables Key: WTF_GITHUB_TOKEN Action: Your Github API token.
+Key: WTF_GITHUB_BASE_URL Action: Your Github Enterprise API URL.
+Key: WTF_GITHUB_UPLOAD_URL Action: Your Github Enterprise upload URL (often the same as API URL).</description>
     </item>
     
     <item>
-      <title>Modules: Git</title>
+      <title>Git</title>
       <link>https://wtfutil.com/posts/modules/git/</link>
       <pubDate>Wed, 09 May 2018 14:20:48 -0700</pubDate>
       
@@ -160,22 +374,21 @@ Key: h Action: Show the previous git repository.</description>
     </item>
     
     <item>
-      <title>Modules: Weather</title>
+      <title>Weather</title>
       <link>https://wtfutil.com/posts/modules/weather/</link>
       <pubDate>Wed, 09 May 2018 11:44:13 -0700</pubDate>
       
       <guid>https://wtfutil.com/posts/modules/weather/</guid>
       <description>Displays a configurable list of current weather report, including current temperature, sunrise time, and sunset time.
-Source Code wtf/weather/ Required ENV Variables Key: WTF_OWM_API_KEY Action: Your OpenWeatherMap API key.
+Source Code wtf/weather/ Required ENV Variables Key: WTF_OWM_API_KEY Action: Your OpenWeatherMap API key. Note: DEPRECATED. See the apiKey config value, below.
 Keyboard Commands Key: / Action: Open/close the widget&amp;rsquo;s help window.
 Key: h Action: Show the previous weather location.
 Key: l Action: Show the next weather location.
-Key: ← Action: Show the previous weather location.
-Key: → Action: Show the next weather location.</description>
+Key: ← Action: Show the previous weather location.</description>
     </item>
     
     <item>
-      <title>Modules: Textfile</title>
+      <title>Textfile</title>
       <link>https://wtfutil.com/posts/modules/textfile/</link>
       <pubDate>Wed, 09 May 2018 11:13:11 -0700</pubDate>
       
@@ -189,7 +402,7 @@ filePath The path to the file to be displayed in the widget.</description>
     </item>
     
     <item>
-      <title>Modules: New Relic</title>
+      <title>New Relic</title>
       <link>https://wtfutil.com/posts/modules/newrelic/</link>
       <pubDate>Wed, 09 May 2018 09:01:14 -0700</pubDate>
       
@@ -202,7 +415,7 @@ deployCount The number of past deploys to display on screen.</description>
     </item>
     
     <item>
-      <title>Modules: OpsGenie</title>
+      <title>OpsGenie</title>
       <link>https://wtfutil.com/posts/modules/opsgenie/</link>
       <pubDate>Tue, 08 May 2018 20:53:40 -0700</pubDate>
       
@@ -216,7 +429,7 @@ position Where in the grid this module&amp;rsquo;s widget will be displayed.</de
     </item>
     
     <item>
-      <title>Modules: Security</title>
+      <title>Security</title>
       <link>https://wtfutil.com/posts/modules/security/</link>
       <pubDate>Tue, 08 May 2018 20:33:28 -0700</pubDate>
       
@@ -226,7 +439,7 @@ Wifi Network The name of the current network Whether or not the network uses enc
     </item>
     
     <item>
-      <title>Modules: Bamboohr</title>
+      <title>BambooHR</title>
       <link>https://wtfutil.com/posts/modules/bamboohr/</link>
       <pubDate>Mon, 07 May 2018 20:17:37 -0700</pubDate>
       
@@ -240,7 +453,7 @@ position Defines where in the grid this module&amp;rsquo;s widget will be displa
     </item>
     
     <item>
-      <title>Modules: Clocks</title>
+      <title>Clocks</title>
       <link>https://wtfutil.com/posts/modules/clocks/</link>
       <pubDate>Mon, 07 May 2018 19:47:31 -0700</pubDate>
       
@@ -282,8 +495,8 @@ Widgets are defined by a required widget.go file in a Module.</description>
       <pubDate>Sun, 15 Apr 2018 21:17:16 -0700</pubDate>
       
       <guid>https://wtfutil.com/posts/configuration/</guid>
-      <description>Configuration Files By default WTF looks in a ~/.wtf/ directory for a YAML file called config.yml. If the ~/.wtf/ directory doesn&amp;rsquo;t exist, WTF will create that directory on start-up, and then display instructions for creating a new configuration file.
-In other words, WTF expects to have a YAML config file at: ~/.wtf/config.yml.
+      <description>Index  Configuration Files Environment (ENV) Variables Grid Layout  Configuration Files By default WTF looks in a ~/.config/wtf/ directory for a YAML file called config.yml. If the ~/.config/wtf/ directory doesn&amp;rsquo;t exist, WTF will create that directory on start-up, and then display instructions for creating a new configuration file.
+In other words, WTF expects to have a YAML config file at: ~/.config/wtf/config.yml.
 Example Configuration Files A couple of example config files are provided in the _sample_configs/ directory of the Git repository.</description>
     </item>
     

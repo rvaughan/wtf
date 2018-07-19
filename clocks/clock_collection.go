@@ -2,6 +2,9 @@ package clocks
 
 import (
 	"sort"
+	"time"
+
+	"github.com/senorprogrammer/wtf/wtf"
 )
 
 type ClockCollection struct {
@@ -9,7 +12,7 @@ type ClockCollection struct {
 }
 
 func (clocks *ClockCollection) Sorted() []Clock {
-	if "chronological" == Config.UString("wtf.mods.clocks.sort", "alphabetical") {
+	if "chronological" == wtf.Config.UString("wtf.mods.clocks.sort", "alphabetical") {
 		clocks.SortedChronologically()
 	} else {
 		clocks.SortedAlphabetically()
@@ -28,10 +31,11 @@ func (clocks *ClockCollection) SortedAlphabetically() {
 }
 
 func (clocks *ClockCollection) SortedChronologically() {
+	now := time.Now()
 	sort.Slice(clocks.Clocks, func(i, j int) bool {
 		clock := clocks.Clocks[i]
 		other := clocks.Clocks[j]
 
-		return clock.LocalTime().Before(other.LocalTime())
+		return clock.ToLocal(now).String() < other.ToLocal(now).String()
 	})
 }

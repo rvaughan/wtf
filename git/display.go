@@ -9,16 +9,14 @@ import (
 )
 
 func (widget *Widget) display() {
-	widget.View.Clear()
-
 	repoData := widget.currentData()
 	if repoData == nil {
-		fmt.Fprintf(widget.View, "%s", " Git repo data is unavailable (1)")
+		widget.View.SetText(" Git repo data is unavailable ")
 		return
 	}
 
 	title := fmt.Sprintf("[green]%s[white]\n", repoData.Repository)
-	widget.View.SetTitle(fmt.Sprintf(" Git: %s ", title))
+	widget.View.SetTitle(fmt.Sprintf("%s- %s", widget.Name, title))
 
 	str := wtf.SigilStr(len(widget.Data), widget.Idx, widget.View) + "\n"
 	str = str + " [red]Branch[white]\n"
@@ -28,7 +26,7 @@ func (widget *Widget) display() {
 	str = str + "\n"
 	str = str + widget.formatCommits(repoData.Commits)
 
-	fmt.Fprintf(widget.View, "%s", str)
+	widget.View.SetText(str)
 }
 
 func (widget *Widget) formatChanges(data []string) string {

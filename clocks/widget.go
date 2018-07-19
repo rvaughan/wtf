@@ -3,12 +3,8 @@ package clocks
 import (
 	"time"
 
-	"github.com/olebedev/config"
 	"github.com/senorprogrammer/wtf/wtf"
 )
-
-// Config is a pointer to the global config object
-var Config *config.Config
 
 type Widget struct {
 	wtf.TextWidget
@@ -18,10 +14,10 @@ type Widget struct {
 
 func NewWidget() *Widget {
 	widget := Widget{
-		TextWidget: wtf.NewTextWidget(" 🕗 World Clocks ", "clocks", false),
+		TextWidget: wtf.NewTextWidget(" World Clocks ", "clocks", false),
 	}
 
-	widget.clockColl = widget.buildClockCollection(Config.UMap("wtf.mods.clocks.locations"))
+	widget.clockColl = widget.buildClockCollection(wtf.Config.UMap("wtf.mods.clocks.locations"))
 
 	return &widget
 }
@@ -29,12 +25,7 @@ func NewWidget() *Widget {
 /* -------------------- Exported Functions -------------------- */
 
 func (widget *Widget) Refresh() {
-	if widget.Disabled() {
-		return
-	}
-
 	widget.UpdateRefreshedAt()
-	widget.View.Clear()
 	widget.display(widget.clockColl.Sorted())
 }
 

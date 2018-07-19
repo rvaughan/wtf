@@ -10,6 +10,7 @@ See this <a href="https://github.com/senorprogrammer/wtf/blob/master/_sample_con
 ```yaml
 wtf:
   colors:
+    background: "red"
     border:
       Focusable: "darkslateblue"
       focused: "orange"
@@ -24,9 +25,17 @@ wtf:
     rows: [10, 10, 10, 10, 10, 3, 4]
   # The app redraws itself once a second
   refreshInterval: 1
+  term: "xterm-256color"
 ```
 
 ### Attributes
+
+`colors.background` <br />
+The color to draw the background of the app in. Use this to match your
+terminal colors. May be over-written by individual module
+configurations. <br />
+Values: Any <a href="https://en.wikipedia.org/wiki/X11_color_names">X11
+color name</a>.
 
 `colors.border.focusable` <br />
 The color in which to draw the border of widgets that can accept
@@ -61,3 +70,12 @@ How often, in seconds, the UI refreshes itself. <br />
 **Note:** This implementation is probably wrong and buggy and likely to
 change. <br />
 Values: A positive integer, `0..n`.
+
+`term` <br />
+_Optional_. <br />
+Sets a custom value for the terminal type this app runs in. Leave this entry out of the config if you simply want to use your terminal's
+default setting. <br />
+**Note:** If an invalid value is provided for this setting, the app will
+ crash with a `"terminal entry not found"` error. <br />
+Values: Any valid terminal type (ie: vt100, xterm, xterm-256color, ansi,
+etc.).

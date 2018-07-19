@@ -1,5 +1,5 @@
 ---
-title: "Modules: Google Calendar"
+title: "Google Calendar"
 date: 2018-05-10T08:25:33-07:00
 draft: false
 ---
@@ -7,6 +7,9 @@ draft: false
 Displays your upcoming Google calendar events.
 
 <img src="/imgs/modules/gcal.png" width="320" height="389" alt="gcal screenshot" />
+
+**Not:** Setting up access to Google Calendars for Go is a bit unobvious. Check out Google's [Go Quickstart](https://developers.google.com/calendar/quickstart/go)
+first and if you have problems, then take a look at this [comment by WesleydeSouza](https://github.com/senorprogrammer/wtf/issues/83#issuecomment-393665229) which offers a slightly different approach.
 
 ## Source Code
 
@@ -16,11 +19,7 @@ wtf/gcal/
 
 ## Required ENV Variables
 
-<span class="caption">Key:</span> `WTF_GOOGLE_CAL_CLIENT_ID` <br />
-<span class="caption">Value:</span> Your <a href="https://developers.google.com/calendar/auth">Google API</a> client ID.
-
-<span class="caption">Key:</span> `WTF_GOOGLE_CAL_CLIENT_SECRET` <br />
-<span class="caption">Value:</span> Your <a href="https://developers.google.com/calendar/auth">Google API</a> client secret.
+None.
 
 ## Keyboard Commands
 
@@ -45,13 +44,14 @@ gcal:
   email: "chriscummer@me.com"
   enabled: true
   eventCount: 12
+  multiCalendar: true
   position:
     top: 0
     left: 0
     height: 4
     width: 1
   refreshInterval: 300
-  secretFile: "~/.wtf/gcal/client_secret.json"
+  secretFile: "~/.config/wtf/gcal/client_secret.json"
   withLocation: true
 ```
 
@@ -105,6 +105,11 @@ Values: `true`, `false`.
 `eventCount` <br />
 The number of calendar events to display. <br />
 Values: A positive integer, `0..n`.
+
+`multiCalendar` <br />
+Whether or not to display your primary calendar or all calendars you
+have access to. <br />
+Values: `true`, or `false`
 
 `position` <br />
 Where in the grid this module's widget will be displayed. <br />

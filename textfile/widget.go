@@ -5,13 +5,9 @@ import (
 	"io/ioutil"
 
 	"github.com/gdamore/tcell"
-	"github.com/olebedev/config"
 	"github.com/rivo/tview"
 	"github.com/senorprogrammer/wtf/wtf"
 )
-
-// Config is a pointer to the global config object
-var Config *config.Config
 
 const HelpText = `
   Keyboard commands for Textfile:
@@ -30,10 +26,10 @@ type Widget struct {
 
 func NewWidget(app *tview.Application, pages *tview.Pages) *Widget {
 	widget := Widget{
-		TextWidget: wtf.NewTextWidget(" 📄 Text File ", "textfile", true),
+		TextWidget: wtf.NewTextWidget(" Text File ", "textfile", true),
 
 		app:      app,
-		filePath: Config.UString("wtf.mods.textfile.filePath"),
+		filePath: wtf.Config.UString("wtf.mods.textfile.filePath"),
 		pages:    pages,
 	}
 
@@ -48,13 +44,8 @@ func NewWidget(app *tview.Application, pages *tview.Pages) *Widget {
 /* -------------------- Exported Functions -------------------- */
 
 func (widget *Widget) Refresh() {
-	if widget.Disabled() {
-		return
-	}
-
 	widget.UpdateRefreshedAt()
-	widget.View.SetTitle(fmt.Sprintf(" 📄 %s ", widget.filePath))
-	widget.View.Clear()
+	widget.View.SetTitle(fmt.Sprintf("%s %s", widget.Name, widget.filePath))
 
 	filePath, _ := wtf.ExpandHomeDir(widget.filePath)
 
@@ -64,9 +55,9 @@ func (widget *Widget) Refresh() {
 	}
 
 	if err != nil {
-		fmt.Fprintf(widget.View, "%s", err)
+		widget.View.SetText(err.Error())
 	} else {
-		fmt.Fprintf(widget.View, "%s", string(fileData))
+		widget.View.SetText(string(fileData))
 	}
 }
 

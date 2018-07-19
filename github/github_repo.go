@@ -10,7 +10,9 @@ import (
 )
 
 type GithubRepo struct {
-	apiKey string
+	apiKey    string
+	baseURL   string
+	uploadURL string
 
 	Name         string
 	Owner        string
@@ -20,9 +22,12 @@ type GithubRepo struct {
 
 func NewGithubRepo(name, owner string) *GithubRepo {
 	repo := GithubRepo{
-		apiKey: os.Getenv("WTF_GITHUB_TOKEN"),
-		Name:   name,
-		Owner:  owner,
+		apiKey:    os.Getenv("WTF_GITHUB_TOKEN"),
+		baseURL:   os.Getenv("WTF_GITHUB_BASE_URL"),
+		uploadURL: os.Getenv("WTF_GITHUB_UPLOAD_URL"),
+
+		Name:  name,
+		Owner: owner,
 	}
 
 	return &repo
@@ -58,12 +63,32 @@ func (repo *GithubRepo) StarCount() int {
 
 /* -------------------- Unexported Functions -------------------- */
 
+func (repo *GithubRepo) isGitHubEnterprise() bool {
+	if len(repo.baseURL) > 0 {
+		if len(repo.uploadURL) == 0 {
+			repo.uploadURL = repo.baseURL
+		}
+		return true
+	}
+	return false
+}
+
 func (repo *GithubRepo) oauthClient() *http.Client {
 	tokenService := oauth2.StaticTokenSource(
 		&oauth2.Token{AccessToken: repo.apiKey},
 	)
 
 	return oauth2.NewClient(context.Background(), tokenService)
+}
+
+func (repo *GithubRepo) githubClient() (*ghb.Client, error) {
+	oauthClient := repo.oauthClient()
+
+	if repo.isGitHubEnterprise() {
+		return ghb.NewEnterpriseClient(repo.baseURL, repo.uploadURL, oauthClient)
+	}
+
+	return ghb.NewClient(oauthClient), nil
 }
 
 // myPullRequests returns a list of pull requests created by username on this repo
@@ -78,7 +103,33 @@ func (repo *GithubRepo) myPullRequests(username string) []*ghb.PullRequest {
 		}
 	}
 
+	if showStatus() {
+		prs = repo.individualPRs(prs)
+	}
+
 	return prs
+}
+
+// individualPRs takes a list of pull requests (presumably returned from
+// github.PullRequests.List) and fetches them individually to get more detailed
+// status info on each. see: https://developer.github.com/v3/git/#checking-mergeability-of-pull-requests
+func (repo *GithubRepo) individualPRs(prs []*ghb.PullRequest) []*ghb.PullRequest {
+	github, err := repo.githubClient()
+	if err != nil {
+		return prs
+	}
+
+	var ret []*ghb.PullRequest
+	for i := range prs {
+		pr, _, err := github.PullRequests.Get(context.Background(), repo.Owner, repo.Name, prs[i].GetNumber())
+		if err != nil {
+			// worst case, just keep the original one
+			ret = append(ret, prs[i])
+		} else {
+			ret = append(ret, pr)
+		}
+	}
+	return ret
 }
 
 // myReviewRequests returns a list of pull requests for which username has been
@@ -98,8 +149,11 @@ func (repo *GithubRepo) myReviewRequests(username string) []*ghb.PullRequest {
 }
 
 func (repo *GithubRepo) loadPullRequests() ([]*ghb.PullRequest, error) {
-	oauthClient := repo.oauthClient()
-	github := ghb.NewClient(oauthClient)
+	github, err := repo.githubClient()
+
+	if err != nil {
+		return nil, err
+	}
 
 	opts := &ghb.PullRequestListOptions{}
 
@@ -113,8 +167,11 @@ func (repo *GithubRepo) loadPullRequests() ([]*ghb.PullRequest, error) {
 }
 
 func (repo *GithubRepo) loadRemoteRepository() (*ghb.Repository, error) {
-	oauthClient := repo.oauthClient()
-	github := ghb.NewClient(oauthClient)
+	github, err := repo.githubClient()
+
+	if err != nil {
+		return nil, err
+	}
 
 	repository, _, err := github.Repositories.Get(context.Background(), repo.Owner, repo.Name)
 

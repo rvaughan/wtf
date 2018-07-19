@@ -1,5 +1,5 @@
 ---
-title: "Modules: Jira"
+title: "Jira"
 date: 2018-05-10T10:44:35-07:00
 draft: false
 ---
@@ -21,9 +21,24 @@ wtf/jira/
 
 ## Keyboard Commands
 
-None.
+<span class="caption">Key:</span> `[return]` <br />
+<span class="caption">Action:</span> Open the selected issue in the browser.
+
+<span class="caption">Key:</span> `j` <br />
+<span class="caption">Action:</span> Select the next item in the list.
+
+<span class="caption">Key:</span> `k` <br />
+<span class="caption">Action:</span> Select the previous item in the list.
+
+<span class="caption">Key:</span> `↓` <br />
+<span class="caption">Action:</span> Select the next item in the list.
+
+<span class="caption">Key:</span> `↑` <br />
+<span class="caption">Action:</span> Select the previous item in the list.
 
 ## Configuration
+
+### Single Jira Project
 
 ```yaml
 jira:
@@ -34,14 +49,42 @@ jira:
   domain: "https://umbrellacorp.atlassian.net"
   email: "chriscummer@me.com"
   enabled: true
+  jql: "issueType = Story"
   position:
     top: 4
     left: 1
     height: 1
     width: 2
-  project: "JIRA"
+  project: "ProjectA"
   refreshInterval: 900
   username: "chris.cummer"
+  verifyServerCertificate: true
+```
+
+### Multiple Jira Projects
+
+If you want to monitor multiple Jira projects, use the following
+configuration (note the difference in `project`):
+
+```yaml
+jira:
+  colors:
+    rows:
+      even: "lightblue"
+      odd: "white"
+  domain: "https://umbrellacorp.atlassian.net"
+  email: "chriscummer@me.com"
+  enabled: true
+  jql: "issueType = Story"
+  position:
+    top: 4
+    left: 1
+    height: 1
+    width: 2
+  project: ["ProjectA", "ProjectB"]
+  refreshInterval: 900
+  username: "chris.cummer"
+  verifyServerCertificate: true
 ```
 
 ### Attributes
@@ -68,6 +111,11 @@ Values: A valid email address string.
 Determines whether or not this module is executed and if its data displayed onscreen. <br />
 Values: `true`, `false`.
 
+`jql` <br />
+_Optional_ <br />
+Custom JQL to be appended to the search query. <br />
+Values: See <a href="https://confluence.atlassian.com/jiracore/blog/2015/07/search-jira-like-a-boss-with-jql">Search Jira like a boss with JQL</a> for details.
+
 `position` <br />
 Defines where in the grid this module's widget will be displayed. <br />
 
@@ -80,3 +128,8 @@ Values: A positive integer, `0..n`.
 
 `username` <br />
 Your Jira username. <br />
+
+`verifyServerCertificate` <br />
+_Optional_ <br />
+Determines whether or not the server's certificate chain and host name are verified. <br />
+Values: `true`, `false`.
